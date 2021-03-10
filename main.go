@@ -12,8 +12,8 @@ func handler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-	log.Printf("Hello world sample started.")
+	log.Printf("Hello world sample started. Version 1")
 
 	http.HandleFunc("/", handler)
-	http.ListenAndServe(":8081", nil)
+	http.ListenAndServe(":8080", nil)
 }
