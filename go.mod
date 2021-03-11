@@ -1,3 +1,3 @@
-module github.com/dangrondahl/argo-hello-go-app
+module github.com/dangrondahl/hello-go-app
 
 go 1.16
