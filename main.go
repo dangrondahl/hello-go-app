@@ -1,19 +1,16 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"net/http"
+
+	"github.com/dangrondahl/hello-go-app/handlers"
 )
 
-func handler(w http.ResponseWriter, r *http.Request) {
-	log.Printf("Hello world received a request.")
-	fmt.Fprintf(w, "Hello World: Example!\n")
-}
-
+// How to try it: go run main.go
 func main() {
-	log.Printf("Hello world sample started. Version 1")
-
-	http.HandleFunc("/", handler)
-	http.ListenAndServe(":8080", nil)
+	log.Print("Starting the service...")
+	router := handlers.Router()
+	log.Print("The service is ready to listen and serve.")
+	log.Fatal(http.ListenAndServe(":8080", router))
 }
