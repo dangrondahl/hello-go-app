@@ -7,7 +7,7 @@ import (
 	"testing"
 )
 
-func TestHome(t *testing.T) {
+func TestRoot(t *testing.T) {
 	w := httptest.NewRecorder()
 	root(w, nil)
 

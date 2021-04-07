@@ -16,6 +16,9 @@ RUN go get -d -v
 # Build the binary
 RUN go build -o ./out/hello .
 
+# Run unit tests
+RUN go test -v ./...
+
 # Step 2 - Build a smaller image
 FROM scratch
 
