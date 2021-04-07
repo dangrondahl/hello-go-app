@@ -1,6 +1,7 @@
 # Hello world in Go
 
 Super simple web server app made for demo purposes.
+Heavy inspired by (https://blog.gopheracademy.com/advent-2017/kubernetes-ready-service/)[https://blog.gopheracademy.com/advent-2017/kubernetes-ready-service/]
 
 ## Usage
 
