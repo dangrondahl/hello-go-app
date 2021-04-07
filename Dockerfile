@@ -1,5 +1,5 @@
 # Step 1 - build the executable
-FROM golang:alpine as builder
+FROM golang:1.16-alpine as builder
 
 ENV CGO_ENABLED=0 \
   GOOS=linux \
@@ -15,6 +15,9 @@ RUN go get -d -v
 
 # Build the binary
 RUN go build -o ./out/hello .
+
+# Run unit tests
+RUN go test -v ./...
 
 # Step 2 - Build a smaller image
 FROM scratch
