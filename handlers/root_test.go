@@ -1,13 +1,14 @@
 package handlers
 
 import (
+	"encoding/json"
 	"io/ioutil"
 	"net/http"
 	"net/http/httptest"
 	"testing"
 )
 
-func TestRoot(t *testing.T) {
+func TestHome(t *testing.T) {
 	w := httptest.NewRecorder()
 	root(w, nil)
 
@@ -21,7 +22,12 @@ func TestRoot(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	if have, want := string(greeting), "Hello World: Example!"; have != want {
-		t.Errorf("The greeting is wrong. Have: %s, want: %s.", have, want)
+	info := struct {
+		BuildTime string `json:"buildTime"`
+		Commit    string `json:"commit"`
+	}{}
+	err = json.Unmarshal(greeting, &info)
+	if err != nil {
+		t.Fatal(err)
 	}
 }

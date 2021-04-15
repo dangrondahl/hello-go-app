@@ -27,7 +27,7 @@ RUN go build \
 
 
 # Run unit tests
-#RUN go test -v ./...
+RUN go test -v ./...
 
 # Step 2 - Build a smaller image
 FROM scratch
