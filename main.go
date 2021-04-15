@@ -13,7 +13,7 @@ func main() {
 	log.Printf(
 		"Starting the service...\ncommit: %s, build time: %s",
 		version.Commit, version.BuildTime)
-	router := handlers.Router()
+	router := handlers.Router(version.BuildTime, version.Commit)
 	log.Print("The service is ready to listen and serve.")
 	log.Fatal(http.ListenAndServe(":8080", router))
 }

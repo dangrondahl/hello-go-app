@@ -5,8 +5,8 @@ import (
 )
 
 // Router register necessary routes and returns an instance of a router.
-func Router() *mux.Router {
+func Router(buildTime, commit string) *mux.Router {
 	r := mux.NewRouter()
-	r.HandleFunc("/", root).Methods("GET")
+	r.HandleFunc("/", root(buildTime, commit)).Methods("GET")
 	return r
 }
