@@ -1,6 +1,11 @@
 # Step 1 - build the executable
 FROM golang:1.16-alpine as builder
 
+ARG PROJECT=github.com/dangrondahl/hello-go-app
+ARG RELEASE
+ARG COMMIT
+ARG BUILD_TIME
+
 ENV CGO_ENABLED=0 \
   GOOS=linux \
   GOARCH=amd64
@@ -14,10 +19,14 @@ COPY . .
 RUN go get -d -v
 
 # Build the binary
-RUN go build -o ./out/hello .
+RUN go build \
+  #-ldflags "-s -w -X ${PROJECT}/version.Release=${RELEASE} \
+  #  -X ${PROJECT}/version.Commit=${COMMIT} -X ${PROJECT}/version.BuildTime=${BUILD_TIME}" \
+  -o ./out/hello .
+
 
 # Run unit tests
-RUN go test -v ./...
+#RUN go test -v ./...
 
 # Step 2 - Build a smaller image
 FROM scratch
