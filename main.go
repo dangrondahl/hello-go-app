@@ -11,8 +11,8 @@ import (
 // How to try it: go run main.go
 func main() {
 	log.Printf(
-		"Starting the service...\ncommit: %s, build time: %s, version: %s",
-		version.Commit, version.BuildTime, version.Version)
+		"Starting the service...\ncommit: %s, build time: %s",
+		version.Commit, version.BuildTime)
 	router := handlers.Router()
 	log.Print("The service is ready to listen and serve.")
 	log.Fatal(http.ListenAndServe(":8080", router))

@@ -12,9 +12,8 @@ func root(w http.ResponseWriter, r *http.Request) {
 	info := struct {
 		BuildTime string `json:"buildTime"`
 		Commit    string `json:"commit"`
-		Release   string `json:"version"`
 	}{
-		version.BuildTime, version.Commit, version.Version,
+		version.BuildTime, version.Commit,
 	}
 
 	body, err := json.Marshal(info)

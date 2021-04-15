@@ -20,8 +20,9 @@ RUN go get -d -v
 
 # Build the binary
 RUN go build \
-  -ldflags "-s -w -X ${PROJECT}/version.Version=${VERSION} \
-  -X ${PROJECT}/version.Commit=${COMMIT} -X ${PROJECT}/version.BuildTime=${BUILD_TIME}" \
+  -ldflags "-s -w \
+  -X ${PROJECT}/version.Commit=${COMMIT} \
+  -X ${PROJECT}/version.BuildTime=${BUILD_TIME}" \
   -o ./out/hello .
 
 
