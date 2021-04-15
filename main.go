@@ -15,5 +15,5 @@ func main() {
 		version.Commit, version.BuildTime, version.Version)
 	router := handlers.Router()
 	log.Print("The service is ready to listen and serve.")
-	log.Fatal(http.ListenAndServe(":8085", router))
+	log.Fatal(http.ListenAndServe(":8080", router))
 }
