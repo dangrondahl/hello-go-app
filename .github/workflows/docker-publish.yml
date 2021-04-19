@@ -91,8 +91,8 @@ jobs:
         run: |
           sed -i 's+appVersion:.*$*+appVersion: "${{ steps.vars.outputs.sha_short }}"+' hello-go/Chart.yaml
 
-          git config user.email ${{ secrets.USER_EMAIL }}"
-          git config user.name ${{ secrets.USER_NAME }}"
+          git config user.email ${{ secrets.USER_EMAIL }}
+          git config user.name ${{ secrets.USER_NAME }}
 
           git add hello-go/Chart.yaml
           git commit -m"Update version from hello-go-app"
