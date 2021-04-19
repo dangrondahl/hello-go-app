@@ -83,16 +83,13 @@ jobs:
           docker tag $IMAGE_NAME $IMAGE_ID:$VERSION
           docker push $IMAGE_ID:$VERSION
 
-  deploy:
-    # Ensure test job passes before pushing image.
-    needs: push
-    runs-on: ubuntu-latest
-
-    steps:
       - uses: actions/checkout@master
         with:
-          name: dangrondahl/gitops-demo-environment
+          repository: dangrondahl/gitops-demo-environment
+          path: hello-go
+
       - name: Update manifest
         run: |
-          sed -i .bak 's+appVersion:.*$*+appVersion: "${{ steps.vars.outputs.sha_short }}"+' ./hello-go/Chart.yaml
-          tail -1 ./hello-go/Chart.yaml
+          tail -1 Chart.yaml
+          sed -i .bak 's+appVersion:.*$*+appVersion: "${{ steps.vars.outputs.sha_short }}"+' ./Chart.yaml
+          tail -1 ./Chart.yaml
