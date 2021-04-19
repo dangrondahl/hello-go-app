@@ -86,14 +86,18 @@ jobs:
       - uses: actions/checkout@main
         with:
           repository: dangrondahl/gitops-demo-environment
+          token: ${{secrets.GITOPS_PAT}}
 
       - name: Update manifest
         run: |
           sed -i 's+appVersion:.*$*+appVersion: "${{ steps.vars.outputs.sha_short }}"+' hello-go/Chart.yaml
 
-          git config user.email ${{ secrets.USER_EMAIL }}
-          git config user.name ${{ secrets.USER_NAME }}
+          git config user.email "actions@gihub.com"
+          git config user.name "github-actions"
 
           git add hello-go/Chart.yaml
           git commit -m"Update version from hello-go-app"
-          git push
+          git push https://$USER_NAME:$REPO_KEY@github.com/dangrondahl/gitops-demo-environment.git master
+        env:
+          REPO_KEY: ${{secrets.GITOPS_PAT}}
+          USER_NAME: github-actions
