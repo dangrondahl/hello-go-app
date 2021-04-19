@@ -86,10 +86,10 @@ jobs:
       - uses: actions/checkout@master
         with:
           repository: dangrondahl/gitops-demo-environment
-          path: hello-go
 
       - name: Update manifest
         run: |
-          tail -1 Chart.yaml
-          sed -i .bak 's+appVersion:.*$*+appVersion: "${{ steps.vars.outputs.sha_short }}"+' ./Chart.yaml
-          tail -1 ./Chart.yaml
+          ls -la
+          tail -1 hello-go/Chart.yaml
+          sed -i .bak 's+appVersion:.*$*+appVersion: "${{ steps.vars.outputs.sha_short }}"+' hello-go/Chart.yaml
+          tail -1 hello-go/Chart.yaml
