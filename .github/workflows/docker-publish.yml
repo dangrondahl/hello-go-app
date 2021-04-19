@@ -91,5 +91,5 @@ jobs:
         run: |
           ls -la
           tail -1 hello-go/Chart.yaml
-          sed -i .bak 's+appVersion:.*$*+appVersion: "${{ steps.vars.outputs.sha_short }}"+' hello-go/Chart.yaml
+          sed -i 's+appVersion:.*$*+appVersion: "${{ steps.vars.outputs.sha_short }}"+' hello-go/Chart.yaml
           tail -1 hello-go/Chart.yaml
