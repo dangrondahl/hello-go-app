@@ -96,7 +96,7 @@ jobs:
           git config user.name "github-actions"
 
           git add hello-go/Chart.yaml
-          git commit -m"Update version from hello-go-app"
+          git commit -m"Auto-update app version to ${{ steps.vars.outputs.sha_short }}"
           git push https://$USER_NAME:$REPO_KEY@github.com/dangrondahl/gitops-demo-environment.git master
         env:
           REPO_KEY: ${{secrets.GITOPS_PAT}}
