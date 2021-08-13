@@ -14,7 +14,7 @@ func Router(buildTime, commit string) *mux.Router {
 	isReady.Store(false)
 	go func() {
 		log.Printf("Readyz probe is negative by default...")
-		time.Sleep(2 * time.Second)
+		time.Sleep(5 * time.Second)
 		isReady.Store(true)
 		log.Printf("Readyz probe is positive.")
 	}()
