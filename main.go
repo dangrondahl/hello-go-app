@@ -1,8 +1,9 @@
 package main
 
 import (
-	"log"
 	"net/http"
+
+	log "github.com/sirupsen/logrus"
 
 	"github.com/dangrondahl/hello-go-app/handlers"
 	"github.com/dangrondahl/hello-go-app/version"

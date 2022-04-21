@@ -1,9 +1,10 @@
 package handlers
 
 import (
-	"log"
 	"sync/atomic"
 	"time"
+
+	log "github.com/sirupsen/logrus"
 
 	"github.com/gorilla/mux"
 )
@@ -22,6 +23,6 @@ func Router(buildTime, commit string) *mux.Router {
 	r := mux.NewRouter()
 	r.HandleFunc("/", root(buildTime, commit)).Methods("GET")
 	r.HandleFunc("/healthz", healthz).Methods("GET")
-	r.HandleFunc("/readyz", readyz(isReady))
+	r.HandleFunc("/readyz", readyz(isReady)).Methods("GET")
 	return r
 }
